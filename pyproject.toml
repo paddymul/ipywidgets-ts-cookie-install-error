@@ -2,7 +2,7 @@
 requires = [
     "hatchling>=1.6.01",
     "jupyterlab==3.*",
-    "pandas>=1.4"  #very strict can defintely be relaxed
+    "pandas>=1.0.0"  #very strict can defintely be relaxed
 ]
 build-backend = "hatchling.build"
 
