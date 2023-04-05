@@ -3,9 +3,9 @@ const version = require('./package.json').version;
 
 // Custom webpack rules
 const rules = [
-  { test: /\.ts$/, loader: 'ts-loader' },
+  { test: /\.tsx?$/, loader: 'ts-loader', options: { transpileOnly: true } },
   { test: /\.js$/, loader: 'source-map-loader' },
-  { test: /\.css$/, use: ['style-loader', 'css-loader']}
+  { test: /\.css$/, use: ['style-loader', 'css-loader']},
 ];
 
 // Packages that shouldn't be bundled but loaded at runtime
@@ -13,7 +13,7 @@ const externals = ['@jupyter-widgets/base'];
 
 const resolve = {
   // Add '.ts' and '.tsx' as resolvable extensions.
-  extensions: [".webpack.js", ".web.js", ".ts", ".js"]
+  extensions: [".webpack.js", ".web.js", ".ts", ".js", ".tsx", ".jsx"]
 };
 
 module.exports = [
@@ -28,7 +28,8 @@ module.exports = [
     output: {
       filename: 'index.js',
       path: path.resolve(__dirname, 'dcf', 'nbextension'),
-      libraryTarget: 'amd',
+      //libraryTarget: 'amd',
+      libraryTarget: 'commonjs2',
       publicPath: '',
     },
     module: {
