@@ -81,3 +81,24 @@ pip install tbump
 tbump <new-version>
 ```
 
+## Packaging
+primarily following instructions from 
+https://packaging.python.org/en/latest/tutorials/packaging-projects/
+```
+python -m pip install --upgrade twine
+python -m pip install --upgrade build
+yarn build
+python -m build .
+rm dist/index.*
+twine check dist/*
+python -m twine upload --repository testpypi dist/*
+
+```
+
+install via 
+```
+conda create -n dcf-widget-install-3 pandas jupyter
+conda activate dcf-widget-install-3
+pip install -i https://test.pypi.org/simple/ dcf==0.1.1.dev0
+```
+
